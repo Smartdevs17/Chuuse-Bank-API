@@ -7,11 +7,13 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
+
 const accountRoute = require("./routes/Customer");
 const transactionRoute = require("./routes/Transaction");
 
 app.use("/api/account",accountRoute);
 app.use("/api/transaction",transactionRoute);
+
 
 
 

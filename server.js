@@ -1,7 +1,12 @@
 const http = require("http");
-const app = require("./app")
+const mongoose = require("mongoose")
+const app = require("./app");
 const server = http.createServer(app);
-const {connection} = require("./database/config");
+// const {connection} = require("./database/config");
+
+beforeAll(async () => {
+     await mongoose.connect(process.env.MONGO_URL,{useNewUrlParser: true});
+  });
 
 
 
