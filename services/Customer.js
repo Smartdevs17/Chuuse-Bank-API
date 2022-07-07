@@ -10,7 +10,7 @@ const NewAccount = async(data) => {
             return newAccount.generateAuthToken();
         }).then(token => {
             return token
-        })
+        });
 
        
      } catch (error) {

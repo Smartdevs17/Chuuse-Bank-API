@@ -24,7 +24,9 @@ const CreateAccount = async(req,res) => {
             newAccount.save().then(() => {
                 return newAccount.generateAuthToken();
             }).then(token => {
-                res.header("x-auth",token).status(200).json(newAccount)
+                res.header("authorization",token).status(200).json({
+                    success: true,newAccount
+                });
             })
     
            
@@ -90,7 +92,10 @@ const GetAccount = async(req,res) => {
                 res.status(200).json(user )
             }
         }).catch(err => {
-            res.status(401).json(err);
+            res.status(401).json({
+                success: false,
+                message: "Unauthorized access. Token is Undefined",
+            });
         });
 
         }else{
